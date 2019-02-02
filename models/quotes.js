@@ -7,4 +7,4 @@ var schema = mongoose.Schema({
 
 var Quotes = mongoose.model('quotes', schema);
 
-module.exports = schema;
+module.exports = Quotes;

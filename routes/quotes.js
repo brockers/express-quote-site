@@ -15,4 +15,10 @@ db.once('open', function() {
 
 var Quotes = require('../models/quotes')
 
+router.get('/all', function(req, res, next) {
+	Quotes.find({}).exec(function(err, data) {
+		res.json(data);
+	});
+});
+
 module.exports = router;
