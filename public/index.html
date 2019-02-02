@@ -16,9 +16,11 @@
   </header>
   <main>
     <form>
-      <input id="newquote" type="text" placeholder="It was the best of times...">
-      <input id="author" type="text" placeholder="Chuck Dickens">
-      <button type="button">Add Quote</button>
+      <div class="form-group">
+        <textarea id="newQuote" class="form-control" type="text" placeholder="It was the best of times..."></textarea>
+        <input id="author" class="form-control" type="text" placeholder="Chuck Dickens">
+        <button id="addQuote" type="button" class="btn btn-primary">Add Quote</button>
+      </div>
     </form>
     <ul id="quotes" class="list-group">
       <li>All the world is a stage, and the people merely players. --Will</li>
@@ -38,7 +40,7 @@
     }
 
     function addQuote(){
-      var quote = $("#newquote").val();
+      var quote = $("#newQuote").val();
       var auth = $("#author").val();
 
       if( quote.trim() && auth.trim() ){
@@ -49,7 +51,7 @@
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function(data){
-            $("#quote").val("");
+            $("#newQuote").val("");
             $("#author").val("");
             console.log(data);
           },
@@ -62,6 +64,10 @@
 
     $(document).ready(function(){
       listQuotes();
+      $("#addQuote").click(function(){
+        addQuote();
+        listQuotes();
+      });
     });
   </script>
 </body>
